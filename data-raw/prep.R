@@ -12,5 +12,6 @@ qtr <-  qtr %>%
     country = str_trim(country),
     number = str_extract(number, "\\d+")
 )
-df <- df %>% mutate(Qualtrics = qtr$number)
+df <- df %>% mutate(Qualtrics = qtr$number) %>% clean_names()
+
 write_csv(df, here("data", "countries.csv"))
