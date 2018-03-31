@@ -1,15 +1,16 @@
 library(tidyverse)
 library(stringr)
 library(janitor)
-df <- read_csv("country_coding.csv", col_names = FALSE)
+library(here)
+df <- read_csv(here("data-raw", "all.csv"), col_names = TRUE)
 
-df <- str_split(df$X1, pattern = "\\((?=[^(]*$)", simplify =TRUE) %>% as.tibble() 
-names(df) <- c("country", "number")
+qtr <- str_split(df$Qualtrics, pattern = "\\((?=[^(]*$)", simplify = TRUE) %>% as.tibble()
+names(qtr) <- c("country", "number")
 
-df <-  df %>% 
+qtr <-  qtr %>%
   mutate(
     country = str_trim(country),
     number = str_extract(number, "\\d+")
 )
-
-write_csv(df, "cnt_code.csv")
+df <- df %>% mutate(Qualtrics = qtr$number)
+write_csv(df, here("data", "countries.csv"))

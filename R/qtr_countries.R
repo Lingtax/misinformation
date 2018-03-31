@@ -6,6 +6,6 @@
 #' @export
 qtr_countries <- function(countrycode) {
   if(!is.numeric(countrycode)){stop("Input variable is not a number")}
-  unlist(countries[countries$number==countrycode, 1])
+  countries[countries$number==countrycode, 1]
 
   }
