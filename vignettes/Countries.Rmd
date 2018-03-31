@@ -35,16 +35,17 @@ CreateTableOne("country", data = a)
 This only demonstrates one part of the countries dataset though. It also inludes ISO 3166 reference codes, these are standard and unique identifiers for all countries and consequently, these can provide mappings for graphical representations of the data. 
 ```{r, fig.show='hold'}
 b <- joinCountryData2Map(a, joinCode = "ISO3", nameJoinColumn = "alpha_3")
-par(mai=c(0,0,0.2,0),xaxs="i",yaxs="i")
-mapBubbles(dF=b,
-           oceanCol="lightblue",
-           landCol="wheat")
+#par(mai=c(0,0,0.2,0),xaxs="i",yaxs="i")
+#mapBubbles(dF=b,
+#           oceanCol="lightblue",
+#           landCol="wheat")
 ```
 
 As the countries data also contains region information, this is also useful for summarising the data.
 
 ```{r}
-CreateTableOne("region", data = a)
+CreateTableOne("sub_region", data = a)
+ggplot(a, aes(region)) + geom_bar()
 ```
 
 
