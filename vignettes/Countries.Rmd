@@ -9,12 +9,12 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-The survey software Qualtrics provides what appears to be a helpful country question, but turns out to be awful mostly as a function of Qualtrics'export behaviours (i.e. it outputs data all as number or all as item text). Secondarily, it then provides you a codebook which is unfriendly for re-labelling.
+The survey software Qualtrics provides what appears to be a helpful country question, but turns out to be awful mostly as a function of Qualtrics' export behaviours (i.e. it outputs data all as number or all as item text). Secondarily, it then provides you a codebook which is unfriendly for re-labelling.
 
 The `Qualtrics package` provides a dataframe `countries` which contains the qualtrics reference numbers, country names, and ISO 3166 codes. This should be integrated with data using join functions, which will allow for cogent descriptives, and also the integration with spatial packages, this in turn would allow for the generation of sampling maps. 
 
 This vignette relies upon a number of packages in addition to the Qualtrics package which can be installed with the command `devtools::install_github("lingtax/Qualtrics")`
-```{r}
+```{r include=FALSE}
 library(dplyr)
 library(magrittr)
 library(Qualtrics)
@@ -33,17 +33,26 @@ CreateTableOne("country", data = a)
 ```
 
 This only demonstrates one part of the countries dataset though. It also inludes ISO 3166 reference codes, these are standard and unique identifiers for all countries and consequently, these can provide mappings for graphical representations of the data. 
-```{r, fig.show='hold'}
+```{r}
+# obtain the frequency of each country
+freq <- a %>% group_by(country) %>% count() 
+a <- a %>% left_join(freq)
+
+# bind to country data
 b <- joinCountryData2Map(a, joinCode = "ISO3", nameJoinColumn = "alpha_3")
-#par(mai=c(0,0,0.2,0),xaxs="i",yaxs="i")
-#mapBubbles(dF=b,
-#           oceanCol="lightblue",
-#           landCol="wheat")
+
+# plot graph
+par(mai=c(0,0,0.2,0),xaxs="i",yaxs="i")
+mapBubbles(dF=b,
+           nameZSize="n",
+           nameZColour = "region",
+           oceanCol="lightblue",
+           landCol="wheat")
 ```
 
 As the countries data also contains region information, this is also useful for summarising the data.
 
-```{r}
+```{r, fig.show='hold'}
 CreateTableOne("sub_region", data = a)
 ggplot(a, aes(region)) + geom_bar()
 ```

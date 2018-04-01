@@ -12,7 +12,7 @@
 
 <meta name="author" content="Mathew Ling" />
 
-<meta name="date" content="2018-03-31" />
+<meta name="date" content="2018-04-01" />
 
 <title>Working with Countries</title>
 
@@ -70,30 +70,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">Working with Countries</h1>
 <h4 class="author"><em>Mathew Ling</em></h4>
-<h4 class="date"><em>2018-03-31</em></h4>
+<h4 class="date"><em>2018-04-01</em></h4>
 
 
 
-<p>The survey software Qualtrics provides what appears to be a helpful country question, but turns out to be awful mostly as a function of Qualtrics’export behaviours (i.e. it outputs data all as number or all as item text). Secondarily, it then provides you a codebook which is unfriendly for re-labelling.</p>
+<p>The survey software Qualtrics provides what appears to be a helpful country question, but turns out to be awful mostly as a function of Qualtrics’ export behaviours (i.e. it outputs data all as number or all as item text). Secondarily, it then provides you a codebook which is unfriendly for re-labelling.</p>
 <p>The <code>Qualtrics package</code> provides a dataframe <code>countries</code> which contains the qualtrics reference numbers, country names, and ISO 3166 codes. This should be integrated with data using join functions, which will allow for cogent descriptives, and also the integration with spatial packages, this in turn would allow for the generation of sampling maps.</p>
 <p>This vignette relies upon a number of packages in addition to the Qualtrics package which can be installed with the command <code>devtools::install_github(&quot;lingtax/Qualtrics&quot;)</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
-<pre><code>## 
-## Attaching package: 'dplyr'</code></pre>
-<pre><code>## The following objects are masked from 'package:stats':
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(magrittr)
-<span class="kw">library</span>(Qualtrics)
-<span class="kw">library</span>(tableone)
-<span class="kw">library</span>(rworldmap)</code></pre></div>
-<pre><code>## Loading required package: sp</code></pre>
-<pre><code>## ### Welcome to rworldmap ###</code></pre>
-<pre><code>## For a short introduction type :   vignette('rworldmap')</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre></div>
 <p>The country data can be combined with the qualtrics export using the <code>left_join()</code> function contained within the <code>dplyr</code> package. This can then be fed into <code>tableone::CreateTableOne()</code> to generate substantially more intelligble frequencies.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">qualtrics =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dv">60</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>), <span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">60</span>)
 countries &lt;-<span class="st"> </span>countries
@@ -104,51 +87,74 @@ a &lt;-<span class="st">  </span>a <span class="op">%&gt;%</span><span class="st
 ##                                       Overall  
 ##   n                                   60       
 ##   country (%)                                  
-##      Afghanistan                       2 (3.3) 
-##      Albania                           4 (6.7) 
-##      Algeria                           4 (6.7) 
-##      Andorra                           2 (3.3) 
+##      Afghanistan                       3 (5.0) 
+##      Albania                           2 (3.3) 
+##      Algeria                           2 (3.3) 
+##      Andorra                           1 (1.7) 
 ##      Angola                            3 (5.0) 
-##      Antigua and Barbuda               2 (3.3) 
+##      Antigua and Barbuda               1 (1.7) 
 ##      Australia                         2 (3.3) 
 ##      Austria                           3 (5.0) 
-##      Azerbaijan                        2 (3.3) 
-##      Bahamas                           2 (3.3) 
-##      Bahrain                           1 (1.7) 
+##      Azerbaijan                        3 (5.0) 
+##      Bahamas                           3 (5.0) 
+##      Bahrain                           4 (6.7) 
 ##      Bangladesh                        3 (5.0) 
-##      Barbados                          3 (5.0) 
+##      Barbados                          2 (3.3) 
 ##      Belarus                           2 (3.3) 
-##      Benin                             4 (6.7) 
+##      Belgium                           4 (6.7) 
+##      Belize                            3 (5.0) 
+##      Benin                             1 (1.7) 
 ##      Bhutan                            1 (1.7) 
 ##      Bolivia (Plurinational State of)  1 (1.7) 
-##      Bosnia and Herzegovina            1 (1.7) 
+##      Bosnia and Herzegovina            3 (5.0) 
 ##      Botswana                          2 (3.3) 
-##      Brazil                            3 (5.0) 
-##      Brunei Darussalam                 3 (5.0) 
+##      Brazil                            1 (1.7) 
+##      Brunei Darussalam                 5 (8.3) 
 ##      Bulgaria                          1 (1.7) 
-##      Burkina Faso                      3 (5.0) 
-##      Burundi                           4 (6.7) 
-##      Cambodia                          2 (3.3)</code></pre>
+##      Burkina Faso                      1 (1.7) 
+##      Burundi                           2 (3.3) 
+##      Cameroon                          1 (1.7)</code></pre>
 <p>This only demonstrates one part of the countries dataset though. It also inludes ISO 3166 reference codes, these are standard and unique identifiers for all countries and consequently, these can provide mappings for graphical representations of the data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">b &lt;-<span class="st"> </span><span class="kw">joinCountryData2Map</span>(a, <span class="dt">joinCode =</span> <span class="st">&quot;ISO3&quot;</span>, <span class="dt">nameJoinColumn =</span> <span class="st">&quot;alpha_3&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># obtain the frequency of each country</span>
+freq &lt;-<span class="st"> </span>a <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(country) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>() 
+a &lt;-<span class="st"> </span>a <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(freq)</code></pre></div>
+<pre><code>## Joining, by = &quot;country&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># bind to country data</span>
+b &lt;-<span class="st"> </span><span class="kw">joinCountryData2Map</span>(a, <span class="dt">joinCode =</span> <span class="st">&quot;ISO3&quot;</span>, <span class="dt">nameJoinColumn =</span> <span class="st">&quot;alpha_3&quot;</span>)</code></pre></div>
 <pre><code>## 60 codes from your data successfully matched countries in the map
 ## 0 codes from your data failed to match with a country code in the map
-## 218 codes from the map weren't represented in your data</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#par(mai=c(0,0,0.2,0),xaxs=&quot;i&quot;,yaxs=&quot;i&quot;)</span>
-<span class="co">#mapBubbles(dF=b,</span>
-<span class="co">#           oceanCol=&quot;lightblue&quot;,</span>
-<span class="co">#           landCol=&quot;wheat&quot;)</span></code></pre></div>
+## 216 codes from the map weren't represented in your data</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot graph</span>
+<span class="kw">par</span>(<span class="dt">mai=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.2</span>,<span class="dv">0</span>),<span class="dt">xaxs=</span><span class="st">&quot;i&quot;</span>,<span class="dt">yaxs=</span><span class="st">&quot;i&quot;</span>)
+<span class="kw">mapBubbles</span>(<span class="dt">dF=</span>b,
+           <span class="dt">nameZSize=</span><span class="st">&quot;n&quot;</span>,
+           <span class="dt">nameZColour =</span> <span class="st">&quot;region&quot;</span>,
+           <span class="dt">oceanCol=</span><span class="st">&quot;lightblue&quot;</span>,
+           <span class="dt">landCol=</span><span class="st">&quot;wheat&quot;</span>)</code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 <p>As the countries data also contains region information, this is also useful for summarising the data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">CreateTableOne</span>(<span class="st">&quot;region&quot;</span>, <span class="dt">data =</span> a)</code></pre></div>
-<pre><code>##              
-##               Overall   
-##   n           60        
-##   region (%)            
-##      Africa   20 (33.3) 
-##      Americas 11 (18.3) 
-##      Asia     14 (23.3) 
-##      Europe   13 (21.7) 
-##      Oceania   2 ( 3.3)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">CreateTableOne</span>(<span class="st">&quot;sub_region&quot;</span>, <span class="dt">data =</span> a)</code></pre></div>
+<pre><code>##                               
+##                                Overall   
+##   n                            60        
+##   sub_region (%)                         
+##      Australia and New Zealand  2 ( 3.3) 
+##      Caribbean                  6 (10.0) 
+##      Central America            3 ( 5.0) 
+##      Eastern Africa             2 ( 3.3) 
+##      Eastern Europe             3 ( 5.0) 
+##      Middle Africa              4 ( 6.7) 
+##      Northern Africa            2 ( 3.3) 
+##      South America              2 ( 3.3) 
+##      South-Eastern Asia         5 ( 8.3) 
+##      Southern Africa            2 ( 3.3) 
+##      Southern Asia              7 (11.7) 
+##      Southern Europe            6 (10.0) 
+##      Western Africa             2 ( 3.3) 
+##      Western Asia               7 (11.7) 
+##      Western Europe             7 (11.7)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(a, <span class="kw">aes</span>(region)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 
 
 
