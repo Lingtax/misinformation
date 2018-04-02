@@ -1,2 +1,13 @@
 # Qualtrics
-package to help deal with qualtrics data
+Qualtrics is an internal r package to help deal with qualtrics data. For example, providing a table of country information to match the default qualtrics country item.
+
+# Installation
+Qualtrics will not be made available on CRAN, but you can install the from github with:
+
+```{r}
+# install.packages("devtools")
+`devtools::install_github("lingtax/Qualtrics")`
+```
+
+# Usage
+See vignettes for examples of use. 
