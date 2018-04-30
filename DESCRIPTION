@@ -9,7 +9,8 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
 Suggests: knitr,
-    rmarkdown
+          rmarkdown
 VignetteBuilder: knitr
 Imports: readr,
-    janitor
+         magrittr,
+         janitor
