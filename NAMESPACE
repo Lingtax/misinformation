@@ -2,3 +2,4 @@
 
 export(read_qualtrics)
 importFrom(magrittr,"%>%")
+

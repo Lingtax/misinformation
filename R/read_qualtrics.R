@@ -6,10 +6,8 @@
 #' @param legacy a Logical indicating if the export used the legacy exporter
 #' @param file a csv of data exported from qualtrics
 #'
-#' @return
+#' @return A tibble of data
 #' @export
-#'
-#' @examples
 read_qualtrics <- function(file, legacy = FALSE) {
   a <- readr::read_csv(file) %>% janitor::clean_names()
   if (legacy == FALSE) {
