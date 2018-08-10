@@ -11,6 +11,9 @@ read_qualtrics(file, legacy = FALSE)
 
 \item{legacy}{a Logical indicating if the export used the legacy exporter}
 }
+\value{
+A tibble of data
+}
 \description{
 Qualtrics exports data with bloat, this function is an opinionated wrapper of
 readr::read_csv() which does some initial cleaning.

@@ -11,8 +11,9 @@
 read_qualtrics <- function(file, legacy = FALSE) {
   a <- readr::read_csv(file) %>% janitor::clean_names()
   if (legacy == FALSE) {
-    a[3:nrow(a), ]
+    a <- a[3:nrow(a), ]
   } else {
-    a[2:nrow(a), ]
+    a <- a[2:nrow(a), ]
   }
+  a %>% readr::type_convert()
 }
