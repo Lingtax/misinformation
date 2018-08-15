@@ -1,12 +1,9 @@
-#' @importFrom tibble tibble
-
 #' Country codes
 #'
-#' Country names, regions and ISO 3166 codes, paired with the reference number
-#' in the default country question in Qualtrics
+#' Country names, regions and ISO 3166 codes, paired with the reference number in the default country question in Qualtrics
 #'
-#' @format A dataframe with ten variables: \code{country}, \code{alpha_2},
-#'   \code{alpha_3},  \code{contry_code},  \code{iso_3166_2},  \code{region},
-#'   \code{sub_region},  \code{region_code},  \code{sub_region_code},
-#'   \code{qualtrics}.
+#' @format A dataframe with ten variables: country, alpha_2,
+#'   alpha_3,  contry_code,  iso_3166_2,  region,
+#'   sub_region,  region_code,  sub_region_code,
+#'   qualtrics.
 "countries"
