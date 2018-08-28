@@ -3,6 +3,7 @@
 export(IRTplot)
 export(meta_rename)
 export(read_qualtrics)
+export(recruit_fees)
 export(required_n)
 importFrom(magrittr,"%>%")
 importFrom(tibble,tibble)
