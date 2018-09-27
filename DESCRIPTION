@@ -18,4 +18,5 @@ Imports:
     magrittr,
     janitor,
     tidyr,
-    dplyr
+    dplyr,
+    googledrive
