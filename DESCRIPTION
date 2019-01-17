@@ -3,7 +3,7 @@ Title: A package for making misinformation lab members less angry.
 Version: 0.0.0.9000
 Authors@R: person("Mathew", "Ling", email = "m.ling@deakin.edu.au", role = c("aut", "cre"))
 Description: Provides helpful resources for data manipulation after extraction from Qualtrics, etc..
-Depends: R (>= 3.4.3)
+Depends: R (>= 3.3)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
