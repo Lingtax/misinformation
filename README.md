@@ -15,7 +15,7 @@ the from github with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("lingtax/misinformation")
+devtools::install_github("Lingtax/misinformation")
 ```
 
 # Usage
