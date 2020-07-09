@@ -12,20 +12,9 @@
 #'
 #' @examples
 #'
-#' testdata <-  tibble(a = 0L,
-#' b = 0L,
-#' c = 0L)
-#'
-#' meta <-  tibble(DatasetPositon = 1:3,
-#'                 VariableID =	letters[1:3],
-#'                 VariableType = "integer",
-#'                 VariableLabel = c("item1", "item2", "item3"),
-#'                 ItemText = c("This is item 1",
-#'                              "This is item 2",
-#'                              "This is item 3")
-#' )
-#'
-#' meta_rename(testdata, metadata = meta, old = VariableID, new = VariableLabel)
+#' meta <- meta
+#' df <- test_data
+#' df <- meta_rename(df, metadata = meta, old = name_raw, new = name_clean)
 #'
 meta_rename <-  function(df, metadata, old, new) {
 
