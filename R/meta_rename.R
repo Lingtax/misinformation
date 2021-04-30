@@ -20,5 +20,9 @@ meta_rename <-  function(df, metadata, old, new) {
 
   keys   <- metadata[[deparse(substitute(old))]]
   values <- metadata[[deparse(substitute(new))]]
-  rename_at(df, vars(keys), ~ values)
-}
+
+  matchlist <- setNames(values, keys)
+  names(df) <- matchlist[names(df)]
+  return(df)
+
+  }
