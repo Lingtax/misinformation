@@ -25,3 +25,7 @@ devtools::install_github("lingtax/misinformation")
 
 # Usage
 See vignettes for examples of use. 
+
+
+![](https://www.youtube.com/watch?v=TwEsqWZr3cI)
+

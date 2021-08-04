@@ -15,9 +15,11 @@ the from github with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("Lingtax/misinformation")
+devtools::install_github("lingtax/misinformation")
 ```
 
 # Usage
 
 See vignettes for examples of use.
+
+![](https://www.youtube.com/watch?v=TwEsqWZr3cI)
