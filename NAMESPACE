@@ -2,6 +2,7 @@
 
 export(IRTplot)
 export(cat_names)
+export(code_us_states)
 export(meta_rename)
 export(read_qualtrics)
 export(recruit_fees)
