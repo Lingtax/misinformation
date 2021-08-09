@@ -13,6 +13,7 @@
 #' mutate(coded_state = code_us_states(state))
 code_us_states <- function(state_code) {
 
+  if(!(state_code %in% c(1:56))) stop("Input `state_code` is not an integer between 1 & 56")
 
   # state_codes <- tribble(
   #   ~index, ~state,
