@@ -1,13 +1,31 @@
-# Qualtrics
-Qualtrics is an internal r package to help deal with qualtrics data. For example, providing a table of country information to match the default qualtrics country item.
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# misinformation
+misinformation is an internal r package to help deal with qualtrics data and other common data processing tasks in the Misinformation lab at Deakin University. For example, providing a table of country information to match the default qualtrics country item.
 
 # Installation
-Qualtrics will not be made available on CRAN, but you can install the from github with:
+misinformation will not be made available on CRAN, but you can install the from github with:
 
-```{r}
+```{r eval=FALSE}
 # install.packages("devtools")
-devtools::install_github("lingtax/Qualtrics")
+devtools::install_github("lingtax/misinformation")
 ```
 
 # Usage
 See vignettes for examples of use. 
+
+
+![](https://www.youtube.com/watch?v=TwEsqWZr3cI)
+
