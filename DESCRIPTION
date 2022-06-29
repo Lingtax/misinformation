@@ -7,7 +7,7 @@ Depends: R (>= 3.3)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: 
     knitr,
     rmarkdown,
@@ -18,4 +18,7 @@ Imports:
     magrittr,
     janitor,
     tidyr,
-    dplyr
+    dplyr,
+    rms
+Remotes:
+    crsh/papaja
